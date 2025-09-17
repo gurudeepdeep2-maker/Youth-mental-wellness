@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>Youth Mental Wellness</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f8ff;
+      color: #333;
+    }
+    header {
+      background: #4a6cf7;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #4a6cf7;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    #chatbox {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      background: #fff;
+      max-width: 600px;
+      margin: auto;
+    }
+    #messages {
+      height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      background: #fafafa;
+    }
+    #userInput {
+      width: 80%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #sendBtn {
+      padding: 10px 15px;
+      background: #4a6cf7;
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    footer {
+      background: #4a6cf7;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Youth Mental Wellness</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#chatbot">Chatbot</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <section id="home">
+    <h2>Welcome</h2>
+    <p>
+      Youth Mental Wellness is an AI-powered, confidential, and empathetic
+      platform that helps young people overcome stigma and access mental health
+      support with ease.
+    </p>
+  </section>
+
+  <section id="features">
+    <h2>Features</h2>
+    <div class="features">
+      <div class="card">
+        <h3>Confidential AI Chatbot</h3>
+        <p>Talk to an empathetic chatbot that listens and provides supportive guidance.</p>
+      </div>
+      <div class="card">
+        <h3>Resource Hub</h3>
+        <p>Access articles, coping strategies, and wellness tips curated for youth.</p>
+      </div>
+      <div class="card">
+        <h3>Emergency Help</h3>
+        <p>Quick access to hotlines and professionals in times of urgent need.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="chatbot">
+    <h2>Chatbot Demo</h2>
+    <div id="chatbox">
+      <div id="messages"></div>
+      <br />
+      <input type="text" id="userInput" placeholder="Type your message..." />
+      <button id="sendBtn">Send</button>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      We are a passionate student team building "Youth Mental Wellness" to
+      create a safe, stigma-free environment for mental health support using
+      Generative AI.
+    </p>
+  </section>
+
+  <footer>
+    <p>© 2025 Youth Mental Wellness | Built with ❤️ for GenAI Hackathon</p>
+  </footer>
+
+  <script>
+    const sendBtn = document.getElementById("sendBtn");
+    const userInput = document.getElementById("userInput");
+    const messages = document.getElementById("messages");
+
+    const botReplies = [
+      "I hear you. It's okay to feel this way.",
+      "You're not alone, many youths go through similar challenges.",
+      "Would you like me to share some coping strategies?",
+      "It's brave to talk about your feelings. Keep going 💙",
+      "If things feel too heavy, remember help is just a call away."
+    ];
+
+    sendBtn.addEventListener("click", () => {
+      const text = userInput.value.trim();
+      if (text === "") return;
+
+      const userMsg = document.createElement("div");
+      userMsg.textContent = "You: " + text;
+      messages.appendChild(userMsg);
+
+      userInput.value = "";
+
+      setTimeout(() => {
+        const botMsg = document.createElement("div");
+        const reply = botReplies[Math.floor(Math.random() * botReplies.length)];
+        botMsg.textContent = "Bot: " + reply;
+        botMsg.style.color = "blue";
+        messages.appendChild(botMsg);
+        messages.scrollTop = messages.scrollHeight;
+      }, 800);
+    });
+  </script>
+</body>
+</html>
